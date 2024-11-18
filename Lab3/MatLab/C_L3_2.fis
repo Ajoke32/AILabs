@@ -1,0 +1,65 @@
+[System]
+Name='C_L3_2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='x1'
+Range=[-50 50]
+NumMFs=5
+MF1='VeryLow':'trimf',[-75 -50 -25]
+MF2='Cold':'trimf',[-50 -25 0]
+MF3='OK':'trimf',[-25 0 25]
+MF4='Warm':'trimf',[0 25 50]
+MF5='Hot':'trimf',[25 50 75]
+
+[Input2]
+Name='x2'
+Range=[-10 10]
+NumMFs=3
+MF1='Negative':'trimf',[-18.33 -10 -0]
+MF2='Zero':'trimf',[0 0 0]
+MF3='Positive':'trimf',[0 10 18.33]
+
+[Output1]
+Name='Regime'
+Range=[-1 1]
+NumMFs=3
+MF1='Cold':'trimf',[-1.833 -1 0]
+MF2='Off':'trimf',[0 0 0]
+MF3='Warm':'trimf',[0 1 1.833]
+
+[Output2]
+Name='Angle'
+Range=[-90 90]
+NumMFs=5
+MF1='LargeL':'trimf',[-135 -90 -40]
+MF2='SmallL':'trimf',[-90 -45 0]
+MF3='Off':'trimf',[0 0 0]
+MF4='SmallR':'trimf',[0 45 90]
+MF5='LargeR':'trimf',[40 90 135]
+
+[Rules]
+5 3, 1 1 (1) : 1
+5 1, 1 2 (1) : 1
+4 3, 1 2 (1) : 1
+4 1, 1 3 (1) : 1
+1 1, 3 5 (1) : 1
+1 3, 3 4 (1) : 1
+2 1, 3 2 (1) : 1
+2 3, 3 3 (1) : 1
+5 2, 1 2 (1) : 1
+4 2, 1 2 (1) : 1
+1 2, 3 4 (1) : 1
+2 2, 3 4 (1) : 1
+3 3, 1 2 (1) : 1
+3 1, 3 4 (1) : 1
+3 2, 2 0 (1) : 1
